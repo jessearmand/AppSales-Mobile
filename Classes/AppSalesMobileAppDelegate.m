@@ -40,6 +40,10 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+	
+	navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+	
 	// Configure and show the window
 	[window addSubview:[navigationController view]];
 	[window makeKeyAndVisible];

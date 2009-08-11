@@ -41,6 +41,8 @@ AppSalesMobile
 	IBOutlet UILabel *loginSectionLabel;
 	IBOutlet UILabel *currencySectionLabel;
 	IBOutlet UILabel *lastRefreshLabel;
+	
+	UIAlertView *mainAlertView;
 }
 
 - (IBAction)refreshExchangeRates:(id)sender;

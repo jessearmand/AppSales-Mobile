@@ -147,7 +147,7 @@
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"AppSales";
+    self.navigationItem.title = @"App Sales";
 	progressView.alpha = 0.0;
 	
 	UIButton *footer = [UIButton buttonWithType:UIButtonTypeCustom];

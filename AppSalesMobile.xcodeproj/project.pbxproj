@@ -16,8 +16,6 @@
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		345D1A480F3174DC002AB336 /* AbstractDayOrWeekController.m in Sources */ = {isa = PBXBuildFile; fileRef = 345D1A470F3174DC002AB336 /* AbstractDayOrWeekController.m */; };
 		34DCF08F0F0461A2009F9929 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DCF08D0F0461A2009F9929 /* SFHFKeychainUtils.m */; };
-		7F1345710EC6D7940050D5F2 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F1345700EC6D7940050D5F2 /* SettingsViewController.xib */; };
-		7F1345A10EC6DAE00050D5F2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F1345A00EC6DAE00050D5F2 /* RootViewController.xib */; };
 		7F17E0570ED4F21E0005D8AF /* CurrencySelectionDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F17E0560ED4F21E0005D8AF /* CurrencySelectionDialog.m */; };
 		7F29EA420ED861B20018C18A /* help in Resources */ = {isa = PBXBuildFile; fileRef = 7F29EA340ED861B20018C18A /* help */; };
 		7F29EA630ED861CE0018C18A /* HelpBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F29EA620ED861CE0018C18A /* HelpBrowser.m */; };
@@ -261,7 +259,6 @@
 		7F6BC8960F72869E004EB9EB /* RegionsGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6BC8920F72869E004EB9EB /* RegionsGraphView.m */; };
 		7F81F8AE0EE2557D00052E7A /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F81F8AD0EE2557D00052E7A /* ProductCell.m */; };
 		7F87BC9C0ED9B588001C8BC8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F87BC9B0ED9B588001C8BC8 /* Security.framework */; };
-		7FA7ECC20EE437C400C1954E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7FA7ECC10EE437C400C1954E /* Localizable.strings */; };
 		7FB0C3F50EB97916005E2C45 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0C3F40EB97916005E2C45 /* Day.m */; };
 		7FB0C3F80EB9791C005E2C45 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0C3F70EB9791C005E2C45 /* Country.m */; };
 		7FB0C3FB0EB97923005E2C45 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0C3FA0EB97923005E2C45 /* Entry.m */; };
@@ -280,6 +277,9 @@
 		7FB391990EE7991D00AC30D5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB391980EE7991D00AC30D5 /* SystemConfiguration.framework */; };
 		7FBC1E5B0FFEA5CC0067F3DA /* AppIconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC1E5A0FFEA5CC0067F3DA /* AppIconManager.m */; };
 		7FF70C620F7C69AD003F64DD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7FF70C610F7C69AD003F64DD /* Settings.bundle */; };
+		8888F34A1031DA2B003ADB29 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8888F3441031DA2B003ADB29 /* Localizable.strings */; };
+		8888F34B1031DA2B003ADB29 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8888F3461031DA2B003ADB29 /* RootViewController.xib */; };
+		8888F34C1031DA2B003ADB29 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8888F3481031DA2B003ADB29 /* SettingsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -289,7 +289,6 @@
 		1D6058910D05DD3D006BFB54 /* AppSalesMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppSalesMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2899E55F0DE3E45000AC0155 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/RootViewController.xib; sourceTree = "<group>"; };
 		28A0AAE50D9B0CCF005BE974 /* AppSalesMobile_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSalesMobile_Prefix.pch; sourceTree = "<group>"; };
 		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -299,8 +298,6 @@
 		345D1A470F3174DC002AB336 /* AbstractDayOrWeekController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractDayOrWeekController.m; sourceTree = "<group>"; };
 		34DCF08D0F0461A2009F9929 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		34DCF08E0F0461A2009F9929 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
-		7F1345720EC6D7990050D5F2 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/SettingsViewController.xib; sourceTree = "<group>"; };
-		7F1345A20EC6DAE50050D5F2 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/RootViewController.xib; sourceTree = "<group>"; };
 		7F17E0550ED4F21E0005D8AF /* CurrencySelectionDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencySelectionDialog.h; sourceTree = "<group>"; };
 		7F17E0560ED4F21E0005D8AF /* CurrencySelectionDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencySelectionDialog.m; sourceTree = "<group>"; };
 		7F29EA340ED861B20018C18A /* help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = help; sourceTree = "<group>"; };
@@ -551,8 +548,6 @@
 		7F81F8AC0EE2557D00052E7A /* ProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
 		7F81F8AD0EE2557D00052E7A /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
 		7F87BC9B0ED9B588001C8BC8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		7FA7ECBF0EE437BF00C1954E /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7FA7ECC30EE437CC00C1954E /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7FB0C3F30EB97916005E2C45 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		7FB0C3F40EB97916005E2C45 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
 		7FB0C3F60EB9791C005E2C45 /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
@@ -566,7 +561,6 @@
 		7FB0C4AA0EB99D01005E2C45 /* CurrencyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyManager.m; sourceTree = "<group>"; };
 		7FB0C5990EBA3680005E2C45 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		7FB0C59A0EBA3680005E2C45 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		7FB0C59C0EBA39C7005E2C45 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/SettingsViewController.xib; sourceTree = "<group>"; };
 		7FB0C62D0EBA43BC005E2C45 /* DaysController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaysController.h; sourceTree = "<group>"; };
 		7FB0C62E0EBA43BC005E2C45 /* DaysController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaysController.m; sourceTree = "<group>"; };
 		7FB0C7040EBA8348005E2C45 /* WeeksController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeksController.h; sourceTree = "<group>"; };
@@ -587,6 +581,12 @@
 		7FBC1E590FFEA5CC0067F3DA /* AppIconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppIconManager.h; sourceTree = "<group>"; };
 		7FBC1E5A0FFEA5CC0067F3DA /* AppIconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppIconManager.m; sourceTree = "<group>"; };
 		7FF70C610F7C69AD003F64DD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		8888F3451031DA2B003ADB29 /* de */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8888F3471031DA2B003ADB29 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		8888F3491031DA2B003ADB29 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/SettingsViewController.xib; sourceTree = "<group>"; };
+		8888F34D1031DA38003ADB29 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8888F34E1031DA38003ADB29 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		8888F34F1031DA38003ADB29 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SettingsViewController.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -657,11 +657,11 @@
 				7F29EA340ED861B20018C18A /* help */,
 				7F4C219A10230F1100F17F7D /* ImagesFlags */,
 				7F4C217510230EF200F17F7D /* Images */,
-				7F1345A00EC6DAE00050D5F2 /* RootViewController.xib */,
+				8888F3441031DA2B003ADB29 /* Localizable.strings */,
+				8888F3461031DA2B003ADB29 /* RootViewController.xib */,
+				8888F3481031DA2B003ADB29 /* SettingsViewController.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
-				7F1345700EC6D7940050D5F2 /* SettingsViewController.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				7FA7ECC10EE437C400C1954E /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1031,6 +1031,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AppSalesMobile" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -1038,6 +1039,7 @@
 				French,
 				German,
 				en,
+				de,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -1054,10 +1056,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
-				7F1345A10EC6DAE00050D5F2 /* RootViewController.xib in Resources */,
-				7F1345710EC6D7940050D5F2 /* SettingsViewController.xib in Resources */,
 				7F29EA420ED861B20018C18A /* help in Resources */,
-				7FA7ECC20EE437C400C1954E /* Localizable.strings in Resources */,
 				7FF70C620F7C69AD003F64DD /* Settings.bundle in Resources */,
 				7F4C218810230EF300F17F7D /* About.png in Resources */,
 				7F4C218910230EF300F17F7D /* Daily.png in Resources */,
@@ -1293,6 +1292,9 @@
 				7F4C234810230F1100F17F7D /* za.png in Resources */,
 				7F4C234910230F1100F17F7D /* zm.png in Resources */,
 				7F4C234A10230F1100F17F7D /* zw.png in Resources */,
+				8888F34A1031DA2B003ADB29 /* Localizable.strings in Resources */,
+				8888F34B1031DA2B003ADB29 /* RootViewController.xib in Resources */,
+				8888F34C1031DA2B003ADB29 /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1336,32 +1338,32 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7F1345700EC6D7940050D5F2 /* SettingsViewController.xib */ = {
+		8888F3441031DA2B003ADB29 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7FB0C59C0EBA39C7005E2C45 /* English */,
-				7F1345720EC6D7990050D5F2 /* German */,
-			);
-			name = SettingsViewController.xib;
-			sourceTree = "<group>";
-		};
-		7F1345A00EC6DAE00050D5F2 /* RootViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2899E55F0DE3E45000AC0155 /* English */,
-				7F1345A20EC6DAE50050D5F2 /* German */,
-			);
-			name = RootViewController.xib;
-			sourceTree = "<group>";
-		};
-		7FA7ECC10EE437C400C1954E /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7FA7ECBF0EE437BF00C1954E /* English */,
-				7FA7ECC30EE437CC00C1954E /* German */,
+				8888F3451031DA2B003ADB29 /* de */,
+				8888F34D1031DA38003ADB29 /* en */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
+		};
+		8888F3461031DA2B003ADB29 /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8888F3471031DA2B003ADB29 /* de */,
+				8888F34E1031DA38003ADB29 /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = SOURCE_ROOT;
+		};
+		8888F3481031DA2B003ADB29 /* SettingsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8888F3491031DA2B003ADB29 /* de */,
+				8888F34F1031DA38003ADB29 /* en */,
+			);
+			name = SettingsViewController.xib;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 
@@ -1370,6 +1372,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jesse Armand Iswaraputra";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1377,6 +1380,7 @@
 				GCC_PREFIX_HEADER = AppSalesMobile_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = AppSalesMobile;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EA0E6F06-021F-4E51-8F0B-72B8F5751C14";
 			};
 			name = Debug;
 		};
@@ -1384,11 +1388,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jesse Armand Iswaraputra";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AppSalesMobile_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = AppSalesMobile;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EA0E6F06-021F-4E51-8F0B-72B8F5751C14";
 			};
 			name = Release;
 		};
@@ -1410,13 +1416,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ole Zorn";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jesse Armand Iswaraputra";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AppSalesMobile_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = AppSalesMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B62523D9-0D86-4FE2-9212-10D397E6472A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EA0E6F06-021F-4E51-8F0B-72B8F5751C14";
 			};
 			name = Distribution;
 		};

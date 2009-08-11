@@ -37,6 +37,11 @@ AppSalesMobile
 
 - (void)dealloc 
 {
+	if (mainAlertView) {
+		[mainAlertView release];
+		mainAlertView = nil;
+	}
+	
     [super dealloc];
 }
 
@@ -92,6 +97,39 @@ AppSalesMobile
 	return YES;
 }
 
+#pragma mark Alert View methods
+
+- (void)showAlertViewWithTitle:(NSString *)title message:(NSString *)message activityIndicator:(BOOL)activityShown 
+{	
+	if (activityShown) {
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(title, nil) message:NSLocalizedString(message, nil) 
+														   delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+		mainAlertView = [alertView retain];
+		[alertView release];
+		
+		UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+		activityIndicator.frame = CGRectMake((320 - 50)/2, mainAlertView.bounds.origin.y + 50, 25, 25);
+		
+		[mainAlertView addSubview:activityIndicator];
+		[activityIndicator startAnimating];
+		
+		[mainAlertView show];
+		[activityIndicator release];
+	} else {
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(title, nil) message:NSLocalizedString(message, nil) 
+														   delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+		[alertView show];
+		[alertView release];
+	}
+}
+
+- (void)hideAlertView 
+{
+	[mainAlertView dismissWithClickedButtonIndex:0 animated:YES];
+	[mainAlertView release];
+	mainAlertView = nil;
+}
+
 #pragma mark Currencies
 - (void)currencyRatesDidUpdate
 {
@@ -102,12 +140,13 @@ AppSalesMobile
 	NSString *lastRefreshString = [formatter stringFromDate:lastRefresh];
 	
 	lastRefreshLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Last refresh: %@",nil), lastRefreshString];
+	
+	[self hideAlertView];
 }
 
 - (void)currencyRatesFailedToUpdate
 {
-	UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error",nil) message:NSLocalizedString(@"The currency exchange rates could not be refreshed. Please check your internet connection.",nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil] autorelease];
-	[alert show];
+	[self showAlertViewWithTitle:@"Error" message:@"The currency exchange rates could not be refreshed.\nPlease check your internet connection." activityIndicator:NO];
 }
 
 - (void)baseCurrencyChanged
@@ -124,6 +163,8 @@ AppSalesMobile
 
 - (IBAction)refreshExchangeRates:(id)sender
 {
+	[self showAlertViewWithTitle:@"Refreshing Exchange Rates" message:nil activityIndicator:YES];
+	
 	[[CurrencyManager sharedManager] forceRefresh];
 }
 
