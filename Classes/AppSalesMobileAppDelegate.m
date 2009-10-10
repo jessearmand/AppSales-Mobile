@@ -49,6 +49,7 @@
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
 	
 	navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+	navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
 	
 	// Configure and show the window
 	[window addSubview:[navigationController view]];

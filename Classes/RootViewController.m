@@ -87,7 +87,6 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"App Sales";
-	progressView.alpha = 0.0;
 	
 	UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
 	[infoButton addTarget:self action:@selector(showInfo) forControlEvents:UIControlEventTouchUpInside];
