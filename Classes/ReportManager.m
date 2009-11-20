@@ -24,7 +24,7 @@
 - (id)init
 {
 	[super init];
-		
+	
 	self.days = [NSMutableDictionary dictionary];
 	self.weeks = [NSMutableDictionary dictionary];
 
@@ -56,6 +56,7 @@
 					NSDateFormatter * lFormat = [NSDateFormatter new];
 					[lFormat setDateFormat:@"MM/dd/yyyy"];
 					NSDate *lDate = [lFormat dateFromString:[loadedDay name]];
+					[lFormat release];
 					if ([lDate isEqual:loadedDay.date])
 						[self.days setObject:loadedDay forKey:[loadedDay name]];
 				}
@@ -100,6 +101,8 @@
 {
 	if (isRefreshing)
 		return;
+	
+	[UIApplication sharedApplication].idleTimerDisabled = YES;
 	
 	NSError *error = nil;
 	NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"iTunesConnectUsername"];
@@ -282,18 +285,18 @@
 		NSString *downloadActionName;
 		if (i==0) {
 			downloadType = @"Daily";
-			downloadActionName = @"11.11.1";
+			downloadActionName = @"11.13.1";
 		}
 		else {
 			downloadType = @"Weekly";
-			downloadActionName = @"11.13.1";
+			downloadActionName = @"11.15.1";
 		}
 		
 		NSString *dateTypeSelectionURLString = [ittsBaseURL stringByAppendingString:dateTypeAction]; 
 		NSDictionary *dateTypeDict = [NSDictionary dictionaryWithObjectsAndKeys:
-									  downloadType, @"11.9", 
+									  downloadType, @"11.11", 
 									  downloadType, @"hiddenDayOrWeekSelection", 
-									  @"Summary", @"11.7", 
+									  @"Summary", @"11.9", 
 									  @"ShowDropDown", @"hiddenSubmitTypeName", nil];
 		NSString *encodedDateTypeDict = [dateTypeDict formatForHTTP];
 		NSData *httpBody = [encodedDateTypeDict dataUsingEncoding:NSASCIIStringEncoding];
@@ -349,10 +352,11 @@
 		int dayNumber = 1;
 		for (NSString *dayString in availableDays) {
 			NSDictionary *dayDownloadDict = [NSDictionary dictionaryWithObjectsAndKeys:
-											 downloadType, @"11.9", 
-											 downloadType, @"hiddenDayOrWeekSelection",
+											 downloadType, @"11.11", 
+											 dayString, @"hiddenDayOrWeekSelection",
 											 @"Download", @"hiddenSubmitTypeName",
-											 @"Summary", @"11.7",
+											 @"ShowDropDown", @"hiddenSubmitTypeName",
+											 @"Summary", @"11.9",
 											 dayString, downloadActionName, 
 											 @"Download", @"download", nil];
 			NSString *encodedDayDownloadDict = [dayDownloadDict formatForHTTP];
@@ -402,6 +406,8 @@
 
 - (void)downloadFailed
 {
+	[UIApplication sharedApplication].idleTimerDisabled = NO;
+	
 	isRefreshing = NO;
 	[self setProgress:@""];
 	UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Download Failed",nil) message:NSLocalizedString(@"Sorry, an error occured when trying to download the report files. Please check your username, password and internet connection.",nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil] autorelease];
@@ -440,6 +446,8 @@
 
 - (void)successfullyDownloadedWeeks:(NSDictionary *)newDays
 {
+	[UIApplication sharedApplication].idleTimerDisabled = NO;
+	
 	isRefreshing = NO;
 	[weeks addEntriesFromDictionary:newDays];
 	[[NSNotificationCenter defaultCenter] postNotificationName:ReportManagerUpdatedDownloadProgressNotification object:self];
@@ -513,6 +521,8 @@
 {
 	if (isDownloadingReviews)
 		return;
+	
+	[UIApplication sharedApplication].idleTimerDisabled = YES;
 	
 	isDownloadingReviews = YES;
 	[self updateReviewDownloadProgress:NSLocalizedString(@"Downloading reviews...",nil)];
@@ -991,6 +1001,8 @@
 
 - (void)finishDownloadingReviews:(NSDictionary *)reviews
 {
+	[UIApplication sharedApplication].idleTimerDisabled = NO;
+	
 	//NSLog(@"%@", reviews);
 	isDownloadingReviews = NO;
 	for (NSString *appID in [reviews allKeys]) {
