@@ -29,6 +29,7 @@ AppSalesMobile
 */
 
 #import "SettingsViewController.h"
+#import "ProgressHUD.h"
 #import "CurrencyManager.h"
 #import "CurrencySelectionDialog.h"
 #import "SFHFKeychainUtils.h"
@@ -141,7 +142,7 @@ AppSalesMobile
 	
 	lastRefreshLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Last refresh: %@",nil), lastRefreshString];
 	
-	[self hideAlertView];
+	[[ProgressHUD sharedHUD] hide];
 }
 
 - (void)currencyRatesFailedToUpdate
@@ -163,7 +164,8 @@ AppSalesMobile
 
 - (IBAction)refreshExchangeRates:(id)sender
 {
-	[self showAlertViewWithTitle:@"Refreshing Exchange Rates" message:nil activityIndicator:YES];
+	[[ProgressHUD sharedHUD] setText:NSLocalizedString(@"Refreshing...",nil)];
+	[[ProgressHUD sharedHUD] show];
 	
 	[[CurrencyManager sharedManager] forceRefresh];
 }
