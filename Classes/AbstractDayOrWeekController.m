@@ -10,7 +10,6 @@
 #import "Day.h"
 #import "DayCell.h"
 #import "CountriesController.h"
-#import "RootViewController.h"
 #import "CurrencyManager.h"
 #import "ReportManager.h"
 

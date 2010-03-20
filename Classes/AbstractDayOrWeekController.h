@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class RootViewController;
 
 @interface AbstractDayOrWeekController : UITableViewController {
-	IBOutlet RootViewController *rootViewController;
 	NSMutableArray *daysByMonth;
 	float maxRevenue;
 	NSDateFormatter *sectionTitleFormatter;
