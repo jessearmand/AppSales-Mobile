@@ -44,7 +44,10 @@
 - (Day *)dayWithData:(NSData *)dayData compressed:(BOOL)compressed;
 - (void)saveData;
 - (NSString *)docPath;
+- (NSString *)originalReportsPath;
+- (NSString *)reportCachePath;
 
+- (void)importReport:(Day *)report;
 - (void)deleteDay:(Day *)dayToDelete;
 
 - (void)downloadReviewsForTopCountriesOnly:(BOOL)topCountriesOnly;

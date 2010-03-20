@@ -41,7 +41,8 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application 
 {
-	self.window = [[[UIWindow alloc] initWithFrame:CGRectMake(0,0,320,480)] autorelease];
+	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+	
 	RootViewController *rootViewController = [[[RootViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
 	self.navigationController = [[[UINavigationController alloc] initWithRootViewController:rootViewController] autorelease];
 	navigationController.toolbarHidden = NO;
@@ -54,12 +55,6 @@
 	// Configure and show the window
 	[window addSubview:[navigationController view]];
 	[window makeKeyAndVisible];
-}
-
-
-- (void)applicationWillTerminate:(UIApplication *)application 
-{
-	
 }
 
 
