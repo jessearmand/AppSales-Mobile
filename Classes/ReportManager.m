@@ -39,24 +39,13 @@
 	else {
 		self.appsByID = [NSMutableDictionary dictionary];
 	}
-		
-	NSString *reportCacheFile = [self reportCachePath];
-	if (![[NSFileManager defaultManager] fileExistsAtPath:reportCacheFile]) {
+	
+	BOOL cacheLoaded = [self loadReportCache];
+	if (!cacheLoaded) {
 		[[ProgressHUD sharedHUD] setText:NSLocalizedString(@"Updating Cache...",nil)];
 		[[ProgressHUD sharedHUD] show];
+		NSString *reportCacheFile = [self reportCachePath];
 		[self performSelectorInBackground:@selector(generateReportCache:) withObject:reportCacheFile];
-	} else {
-		NSLog(@"Load report cache...");
-		NSDictionary *reportCache = [NSKeyedUnarchiver unarchiveObjectWithFile:reportCacheFile];
-		for (NSDictionary *weekSummary in [[reportCache objectForKey:@"weeks"] allValues]) {
-			Day *weekReport = [Day dayWithSummary:weekSummary];
-			[weeks setObject:weekReport forKey:weekReport.date];
-		}
-		for (NSDictionary *daySummary in [[reportCache objectForKey:@"days"] allValues]) {
-			Day *dayReport = [Day dayWithSummary:daySummary];
-			[days setObject:dayReport forKey:dayReport.date];
-		}
-		NSLog(@"Loaded.");
 	}
 	
 	[[CurrencyManager sharedManager] refreshIfNeeded];
@@ -64,6 +53,29 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveData) name:UIApplicationWillTerminateNotification object:nil];
 	
 	return self;
+}
+
+- (BOOL)loadReportCache
+{
+	NSString *reportCacheFile = [self reportCachePath];
+	if (![[NSFileManager defaultManager] fileExistsAtPath:reportCacheFile]) {
+		return NO;
+	}
+	NSDictionary *reportCache = [NSKeyedUnarchiver unarchiveObjectWithFile:reportCacheFile];
+	if (!reportCache) {
+		return NO;
+	}
+	
+	for (NSDictionary *weekSummary in [[reportCache objectForKey:@"weeks"] allValues]) {
+		Day *weekReport = [Day dayWithSummary:weekSummary];
+		[weeks setObject:weekReport forKey:weekReport.date];
+	}
+	for (NSDictionary *daySummary in [[reportCache objectForKey:@"days"] allValues]) {
+		Day *dayReport = [Day dayWithSummary:daySummary];
+		[days setObject:dayReport forKey:dayReport.date];
+	}
+	
+	return YES;
 }
 
 - (void)generateReportCache:(NSString *)reportCacheFile
@@ -81,12 +93,14 @@
 		if (![[filename pathExtension] isEqual:@"dat"]) continue;
 		NSString *fullPath = [docPath stringByAppendingPathComponent:filename];
 		Day *report = [NSKeyedUnarchiver unarchiveObjectWithFile:fullPath];
-		[report generateSummary];
 		if (report != nil) {
-			if (report.isWeek) {
-				[weeksCache setObject:report.summary forKey:report.date];
-			} else  {
-				[daysCache setObject:report.summary forKey:report.date];
+			[report generateSummary];
+			if (report.date) {
+				if (report.isWeek) {
+					[weeksCache setObject:report.summary forKey:report.date];
+				} else  {
+					[daysCache setObject:report.summary forKey:report.date];
+				}
 			}
 		}
 	}
@@ -101,7 +115,7 @@
 - (void)finishGenerateReportCache:(NSDictionary *)generatedCache
 {
 	[[ProgressHUD sharedHUD] hide];
-	
+	[self loadReportCache];
 }
 
 + (ReportManager *)sharedManager
