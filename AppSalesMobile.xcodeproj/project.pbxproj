@@ -1731,46 +1731,49 @@
 			};
 			name = Release;
 		};
-		7FA7ED390EE44EFA00C1954E /* Distribution */ = {
+		889D1776115E6642009575F5 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jesse Armand Iswaraputra";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = AppSales;
-				SDKROOT = iphoneos3.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DB8CF8D1-351C-42A2-AC1E-3BD2F2D63A65";
+				SDKROOT = iphoneos3.1.2;
 			};
-			name = Distribution;
+			name = AdHoc;
 		};
-		7FA7ED3A0EE44EFA00C1954E /* Distribution */ = {
+		889D1777115E6642009575F5 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ole Zorn";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jesse Armand Iswaraputra";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AppSalesMobile_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = AppSalesMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B62523D9-0D86-4FE2-9212-10D397E6472A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DB8CF8D1-351C-42A2-AC1E-3BD2F2D63A65";
 			};
-			name = Distribution;
+			name = AdHoc;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jesse Armand Iswaraputra (PA8AVE83KT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = AppSales;
-				SDKROOT = iphoneos3.1;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "30C1841B-DB2F-4DD9-8095-B2F6E17C6BE0";
+				SDKROOT = iphoneos3.1.2;
 			};
 			name = Debug;
 		};
@@ -1779,14 +1782,14 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ole Zorn";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jesse Armand Iswaraputra";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = AppSales;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E93F46E8-449F-4589-BF04-18A8FC9714F2";
-				SDKROOT = iphoneos3.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DB8CF8D1-351C-42A2-AC1E-3BD2F2D63A65";
+				SDKROOT = iphoneos3.1.2;
 			};
 			name = Release;
 		};
@@ -1798,7 +1801,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
-				7FA7ED3A0EE44EFA00C1954E /* Distribution */,
+				889D1777115E6642009575F5 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1808,7 +1811,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
-				7FA7ED390EE44EFA00C1954E /* Distribution */,
+				889D1776115E6642009575F5 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
