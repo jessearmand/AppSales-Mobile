@@ -1,8 +1,8 @@
 /*
- EntriesController.m
- AppSalesMobile
- 
- * Copyright (c) 2008, omz:software
+ *  UIDevice+iPad.m
+ *
+ * Created by Evan Schoenberg on 3/22/10.
+ * Copyright 2010 Evan Schoenberg.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,60 +28,28 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "EntriesController.h"
-#import "Entry.h"
-#import "EntryCell.h"
+#import "UIDevice+iPad.h"
 
-@implementation EntriesController
+@implementation UIDevice (RRR_DeviceDetermination)
 
-@synthesize entries;
+#ifndef UI_USER_INTERFACE_IDIOM
+@interface UIDevice (ThingsIKnow)
+- (int)userInterfaceIdiom;
+@end
+	#define UI_USER_INTERFACE_IDIOM() ([[UIDevice currentDevice] respondsToSelector:@selector(userInterfaceIdiom)] ? [[UIDevice currentDevice] userInterfaceIdiom] : UIUserInterfaceIdiomPhone)
+	#define UIUserInterfaceIdiomPhone 0
+#endif
 
-
-- (void)dealloc 
+- (BOOL)isPad
 {
-	self.entries = nil;
-    [super dealloc];
-}
-
-- (CGSize)contentSizeForViewInPopover
-{
-	return CGSizeMake(320, 480);
-}
-
-- (void)viewDidLoad 
-{
-    [super viewDidLoad];
-	self.tableView.rowHeight = 45.0;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
-{
-	if (self.entries)
-		return [self.entries count];
+	static BOOL isPad = NO;
+	static BOOL determined = NO;
+	if (!determined) {
+		isPad = (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPhone);
+		determined = YES;
+	}
 	
-    return 0;
+	return isPad;
 }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    EntryCell *cell = (EntryCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[EntryCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-	Entry *entry = [self.entries objectAtIndex:[indexPath row]];
-	cell.entry = entry;
-	
-    return cell;
-}
-
 
 @end
-

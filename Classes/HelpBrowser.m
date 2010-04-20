@@ -44,6 +44,9 @@
 
 - (void)loadView
 {
+	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+	self.navigationController.navigationBar.translucent = NO;
+	
 	self.view = [[[UIWebView alloc] initWithFrame:CGRectMake(0,0,320,480)] autorelease];
 	self.webView = (UIWebView *)self.view;
 	self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;

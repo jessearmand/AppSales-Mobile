@@ -47,6 +47,9 @@
 {
     [super viewDidLoad];
 	
+	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+	self.navigationController.navigationBar.translucent = NO;
+	
 	self.title = NSLocalizedString(@"Currencies",nil);
 	//Create sorted list of currencies:
 	self.sortedCurrencies = [NSMutableArray array];

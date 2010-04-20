@@ -45,6 +45,7 @@
 #import "ReportManager.h"
 #import "ReviewsController.h"
 #import "ImportExportViewController.h"
+#import "UIDevice+iPad.h"
 
 @implementation RootViewController
 
@@ -54,6 +55,11 @@
 - (void)loadView
 {
 	[super loadView];
+	
+	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+	self.navigationController.navigationBar.translucent = NO;
+	self.navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
+	self.navigationController.toolbar.translucent = NO;
 	
 	self.activityIndicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
 	UIBarButtonItem *progressItem = [[[UIBarButtonItem alloc] initWithCustomView:activityIndicator] autorelease];
@@ -65,8 +71,13 @@
 	UIBarButtonItem *flexSpaceItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
 	
 	self.statusLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 32)] autorelease];
-	statusLabel.textColor = [UIColor whiteColor];
+	
+	if ([UIDevice currentDevice].isPad)
+		statusLabel.textColor = [UIColor darkGrayColor];
+	else
+		statusLabel.textColor = [UIColor whiteColor];
 	statusLabel.shadowColor = [UIColor darkGrayColor];
+
 	statusLabel.shadowOffset = CGSizeMake(0, 1);
 	statusLabel.font = [UIFont systemFontOfSize:12.0];
 	statusLabel.numberOfLines = 2;

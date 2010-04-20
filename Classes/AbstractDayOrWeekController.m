@@ -28,6 +28,11 @@
 	return self;
 }
 
+- (CGSize)contentSizeForViewInPopover
+{
+	return CGSizeMake(320, 480);
+}
+
 - (void)viewDidLoad
 {
 	self.tableView.rowHeight = 45.0;

@@ -30,37 +30,37 @@
 
 #import "AppSalesMobileAppDelegate.h"
 #import "RootViewController.h"
+#import "PadRootViewController.h"
 #import "Day.h"
-
+#import "UIDevice+iPad.h"
 
 @implementation AppSalesMobileAppDelegate
 
 @synthesize window;
-@synthesize navigationController;
+@synthesize rootViewController;
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application 
 {
 	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 	
-	RootViewController *rootViewController = [[[RootViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
-	self.navigationController = [[[UINavigationController alloc] initWithRootViewController:rootViewController] autorelease];
-	navigationController.toolbarHidden = NO;
+	if ([[UIDevice currentDevice] isPad]) {
+		self.rootViewController = [[[PadRootViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+	} else {
+		self.rootViewController = [[[UINavigationController alloc] initWithRootViewController:[[[RootViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease]] autorelease];
+		[(UINavigationController *)rootViewController setToolbarHidden:NO];
+	}
 	
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
 	
-	navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-	navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
-	
-	// Configure and show the window
-	[window addSubview:[navigationController view]];
+	[window addSubview:rootViewController.view];
 	[window makeKeyAndVisible];
 }
 
 
 - (void)dealloc 
 {
-	[navigationController release];
+	[rootViewController release];
 	[window release];
 	[super dealloc];
 }
