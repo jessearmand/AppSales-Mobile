@@ -341,6 +341,21 @@
 		7FEA5B40105B6CD2000A12E6 /* ReviewTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = 7FEA5B3F105B6CD2000A12E6 /* ReviewTemplate.html */; };
 		7FEA5B43105B6D38000A12E6 /* SingleReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEA5B42105B6D38000A12E6 /* SingleReviewController.m */; };
 		7FEA5C2C105C1A57000A12E6 /* 5stars_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FEA5C2B105C1A57000A12E6 /* 5stars_gray.png */; };
+		8861551C11CD2BA700EEFF4C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8861551B11CD2BA700EEFF4C /* QuartzCore.framework */; };
+		8861552011CD2BAE00EEFF4C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8861551F11CD2BAE00EEFF4C /* AudioToolbox.framework */; };
+		8861552511CD2C0D00EEFF4C /* CalculatorBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8861552311CD2C0D00EEFF4C /* CalculatorBackground.png */; };
+		8861552611CD2C0D00EEFF4C /* TB_Calculator.png in Resources */ = {isa = PBXBuildFile; fileRef = 8861552411CD2C0D00EEFF4C /* TB_Calculator.png */; };
+		8861554611CD2C8C00EEFF4C /* CalculatorButton2Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 8861553E11CD2C8C00EEFF4C /* CalculatorButton2Highlighted.png */; };
+		8861554711CD2C8C00EEFF4C /* CalculatorButton2Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8861553F11CD2C8C00EEFF4C /* CalculatorButton2Normal.png */; };
+		8861554811CD2C8C00EEFF4C /* CalculatorButton3Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 8861554011CD2C8C00EEFF4C /* CalculatorButton3Highlighted.png */; };
+		8861554911CD2C8C00EEFF4C /* CalculatorButton3Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8861554111CD2C8C00EEFF4C /* CalculatorButton3Normal.png */; };
+		8861554A11CD2C8C00EEFF4C /* CalculatorButton4Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 8861554211CD2C8C00EEFF4C /* CalculatorButton4Highlighted.png */; };
+		8861554B11CD2C8C00EEFF4C /* CalculatorButton4Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8861554311CD2C8C00EEFF4C /* CalculatorButton4Normal.png */; };
+		8861554C11CD2C8C00EEFF4C /* CalculatorButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 8861554411CD2C8C00EEFF4C /* CalculatorButtonHighlighted.png */; };
+		8861554D11CD2C8C00EEFF4C /* CalculatorButtonNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8861554511CD2C8C00EEFF4C /* CalculatorButtonNormal.png */; };
+		8861554F11CD2C9800EEFF4C /* CalculatorClick.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8861554E11CD2C9800EEFF4C /* CalculatorClick.caf */; };
+		8861555211CD2D8900EEFF4C /* MovableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8861555111CD2D8900EEFF4C /* MovableView.m */; };
+		8861555811CD2DA500EEFF4C /* CalculatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8861555711CD2DA500EEFF4C /* CalculatorView.m */; };
 		88A22E33117DE81100E8C7EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A22E32117DE81100E8C7EC /* UIKit.framework */; };
 		88A22E74117DE83400E8C7EC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A22E73117DE83400E8C7EC /* CFNetwork.framework */; };
 		88A22E76117DE83400E8C7EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A22E75117DE83400E8C7EC /* CoreGraphics.framework */; };
@@ -744,6 +759,23 @@
 		7FEA5B41105B6D38000A12E6 /* SingleReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleReviewController.h; sourceTree = "<group>"; };
 		7FEA5B42105B6D38000A12E6 /* SingleReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleReviewController.m; sourceTree = "<group>"; };
 		7FEA5C2B105C1A57000A12E6 /* 5stars_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5stars_gray.png; sourceTree = "<group>"; };
+		8861551B11CD2BA700EEFF4C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8861551F11CD2BAE00EEFF4C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8861552311CD2C0D00EEFF4C /* CalculatorBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalculatorBackground.png; path = Images/CalculatorBackground.png; sourceTree = SOURCE_ROOT; };
+		8861552411CD2C0D00EEFF4C /* TB_Calculator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TB_Calculator.png; path = Images/TB_Calculator.png; sourceTree = SOURCE_ROOT; };
+		8861553E11CD2C8C00EEFF4C /* CalculatorButton2Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalculatorButton2Highlighted.png; path = Images/CalculatorButton2Highlighted.png; sourceTree = SOURCE_ROOT; };
+		8861553F11CD2C8C00EEFF4C /* CalculatorButton2Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalculatorButton2Normal.png; path = Images/CalculatorButton2Normal.png; sourceTree = SOURCE_ROOT; };
+		8861554011CD2C8C00EEFF4C /* CalculatorButton3Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalculatorButton3Highlighted.png; path = Images/CalculatorButton3Highlighted.png; sourceTree = SOURCE_ROOT; };
+		8861554111CD2C8C00EEFF4C /* CalculatorButton3Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalculatorButton3Normal.png; path = Images/CalculatorButton3Normal.png; sourceTree = SOURCE_ROOT; };
+		8861554211CD2C8C00EEFF4C /* CalculatorButton4Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalculatorButton4Highlighted.png; path = Images/CalculatorButton4Highlighted.png; sourceTree = SOURCE_ROOT; };
+		8861554311CD2C8C00EEFF4C /* CalculatorButton4Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalculatorButton4Normal.png; path = Images/CalculatorButton4Normal.png; sourceTree = SOURCE_ROOT; };
+		8861554411CD2C8C00EEFF4C /* CalculatorButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalculatorButtonHighlighted.png; path = Images/CalculatorButtonHighlighted.png; sourceTree = SOURCE_ROOT; };
+		8861554511CD2C8C00EEFF4C /* CalculatorButtonNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalculatorButtonNormal.png; path = Images/CalculatorButtonNormal.png; sourceTree = SOURCE_ROOT; };
+		8861554E11CD2C9800EEFF4C /* CalculatorClick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CalculatorClick.caf; path = Sounds/CalculatorClick.caf; sourceTree = "<group>"; };
+		8861555011CD2D8900EEFF4C /* MovableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovableView.h; path = Classes/MovableView.h; sourceTree = SOURCE_ROOT; };
+		8861555111CD2D8900EEFF4C /* MovableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovableView.m; path = Classes/MovableView.m; sourceTree = SOURCE_ROOT; };
+		8861555611CD2DA500EEFF4C /* CalculatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorView.h; path = Classes/CalculatorView.h; sourceTree = SOURCE_ROOT; };
+		8861555711CD2DA500EEFF4C /* CalculatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculatorView.m; path = Classes/CalculatorView.m; sourceTree = SOURCE_ROOT; };
 		88A22E06117DE39100E8C7EC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = de.lproj/ImportHelp.html; sourceTree = "<group>"; };
 		88A22E07117DE39100E8C7EC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = de.lproj/ImportTemplate.html; sourceTree = "<group>"; };
 		88A22E08117DE39100E8C7EC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -774,6 +806,8 @@
 				88A22E7A117DE83400E8C7EC /* Security.framework in Frameworks */,
 				88A22E7C117DE83400E8C7EC /* SystemConfiguration.framework in Frameworks */,
 				88A22F1B117DE85100E8C7EC /* libz.dylib in Frameworks */,
+				8861551C11CD2BA700EEFF4C /* QuartzCore.framework in Frameworks */,
+				8861552011CD2BAE00EEFF4C /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,6 +868,7 @@
 				7F29EA340ED861B20018C18A /* help */,
 				7F4C219A10230F1100F17F7D /* ImagesFlags */,
 				7F4C217510230EF200F17F7D /* Images */,
+				8861555C11CD2E1100EEFF4C /* Sounds */,
 				7F1345700EC6D7940050D5F2 /* SettingsViewController.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				7FA7ECC10EE437C400C1954E /* Localizable.strings */,
@@ -851,6 +886,8 @@
 				88A22E77117DE83400E8C7EC /* Foundation.framework */,
 				88A22E79117DE83400E8C7EC /* Security.framework */,
 				88A22E7B117DE83400E8C7EC /* SystemConfiguration.framework */,
+				8861551B11CD2BA700EEFF4C /* QuartzCore.framework */,
+				8861551F11CD2BAE00EEFF4C /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -868,6 +905,10 @@
 				7F4A5466116AC58200FA2019 /* ReviewsPane.m */,
 				7F4A54F4116ACF3A00FA2019 /* ReviewSummaryView.h */,
 				7F4A54F5116ACF3A00FA2019 /* ReviewSummaryView.m */,
+				8861555011CD2D8900EEFF4C /* MovableView.h */,
+				8861555111CD2D8900EEFF4C /* MovableView.m */,
+				8861555611CD2DA500EEFF4C /* CalculatorView.h */,
+				8861555711CD2DA500EEFF4C /* CalculatorView.m */,
 			);
 			name = "iPad Interface";
 			sourceTree = "<group>";
@@ -875,6 +916,16 @@
 		7F4C217510230EF200F17F7D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8861553E11CD2C8C00EEFF4C /* CalculatorButton2Highlighted.png */,
+				8861553F11CD2C8C00EEFF4C /* CalculatorButton2Normal.png */,
+				8861554011CD2C8C00EEFF4C /* CalculatorButton3Highlighted.png */,
+				8861554111CD2C8C00EEFF4C /* CalculatorButton3Normal.png */,
+				8861554211CD2C8C00EEFF4C /* CalculatorButton4Highlighted.png */,
+				8861554311CD2C8C00EEFF4C /* CalculatorButton4Normal.png */,
+				8861554411CD2C8C00EEFF4C /* CalculatorButtonHighlighted.png */,
+				8861554511CD2C8C00EEFF4C /* CalculatorButtonNormal.png */,
+				8861552311CD2C0D00EEFF4C /* CalculatorBackground.png */,
+				8861552411CD2C0D00EEFF4C /* TB_Calculator.png */,
 				7F4C217E10230EF200F17F7D /* Icon57.png */,
 				7F82E747116C044D00D5F228 /* Icon72.png */,
 				7F82E924116C322D00D5F228 /* GraphDetailTop.png */,
@@ -1392,6 +1443,14 @@
 			name = Graphs;
 			sourceTree = "<group>";
 		};
+		8861555C11CD2E1100EEFF4C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				8861554E11CD2C9800EEFF4C /* CalculatorClick.caf */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1715,6 +1774,17 @@
 				7F82E926116C322D00D5F228 /* GraphDetailTop.png in Resources */,
 				7F82E927116C322D00D5F228 /* GraphDetailBottom.png in Resources */,
 				7F06B8EB11714FBF00AFB66D /* TB_About.png in Resources */,
+				8861552511CD2C0D00EEFF4C /* CalculatorBackground.png in Resources */,
+				8861552611CD2C0D00EEFF4C /* TB_Calculator.png in Resources */,
+				8861554611CD2C8C00EEFF4C /* CalculatorButton2Highlighted.png in Resources */,
+				8861554711CD2C8C00EEFF4C /* CalculatorButton2Normal.png in Resources */,
+				8861554811CD2C8C00EEFF4C /* CalculatorButton3Highlighted.png in Resources */,
+				8861554911CD2C8C00EEFF4C /* CalculatorButton3Normal.png in Resources */,
+				8861554A11CD2C8C00EEFF4C /* CalculatorButton4Highlighted.png in Resources */,
+				8861554B11CD2C8C00EEFF4C /* CalculatorButton4Normal.png in Resources */,
+				8861554C11CD2C8C00EEFF4C /* CalculatorButtonHighlighted.png in Resources */,
+				8861554D11CD2C8C00EEFF4C /* CalculatorButtonNormal.png in Resources */,
+				8861554F11CD2C9800EEFF4C /* CalculatorClick.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1786,6 +1856,8 @@
 				7F4A526B116A9FDA00FA2019 /* DashboardGraphView.m in Sources */,
 				7F4A5467116AC58200FA2019 /* ReviewsPane.m in Sources */,
 				7F4A54F6116ACF3A00FA2019 /* ReviewSummaryView.m in Sources */,
+				8861555211CD2D8900EEFF4C /* MovableView.m in Sources */,
+				8861555811CD2DA500EEFF4C /* CalculatorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1908,14 +1980,14 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jesse Armand Iswaraputra";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
 				PRODUCT_NAME = AppSales;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "78DD38E7-F073-4FEA-ADC8-AA7694903E5A";
 				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1927,14 +1999,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jesse Armand Iswaraputra";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AppSalesMobile_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PRODUCT_NAME = AppSalesMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "78DD38E7-F073-4FEA-ADC8-AA7694903E5A";
 				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

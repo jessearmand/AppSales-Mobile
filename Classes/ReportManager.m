@@ -200,6 +200,8 @@
 	
 	[self performSelectorOnMainThread:@selector(setProgress:) withObject:NSLocalizedString(@"Logging in...",nil) waitUntilDone:YES];
 	
+	if (!loginPage)
+		NSLog(@"No login page");
 	NSScanner *scanner = [NSScanner scannerWithString:loginPage];
 	NSString *loginAction = nil;
 	[scanner scanUpToString:@"method=\"post\" action=\"" intoString:NULL];
@@ -229,6 +231,8 @@
 	
 	[self performSelectorOnMainThread:@selector(setProgress:) withObject:NSLocalizedString(@"Downloading Daily Reports...",nil) waitUntilDone:YES];
 	
+	if (!dateTypeSelectionPage)
+		NSLog(@"No dateTypeSelectionPage");
 	scanner = [NSScanner scannerWithString:dateTypeSelectionPage];
 	
 	// check if page is "choose vendor" page (Patch by Christian Beer, thanks!)
@@ -267,6 +271,9 @@
 			}
 			NSString *chooseVendorSelectionPage = [[[NSString alloc] initWithData:chooseVendorSelectionPageData encoding:NSUTF8StringEncoding] autorelease];
 			
+			if (!chooseVendorSelectionPage)
+				NSLog(@"No chooseVendorSelectionPage");
+
 			scanner = [NSScanner scannerWithString:chooseVendorSelectionPage];
 			[scanner scanUpToString:@"enctype=\"multipart/form-data\" action=\"" intoString:NULL];
 			NSString *chooseVendorAction2 = nil;
@@ -295,6 +302,9 @@
 			}
 			chooseVendorSelectionPage = [[[NSString alloc] initWithData:chooseVendorSelectionPageData encoding:NSUTF8StringEncoding] autorelease];			
 			
+			if (!chooseVendorSelectionPage)
+				NSLog(@"No chooseVendorSelectionPage");
+
 			scanner = [NSScanner scannerWithString:chooseVendorSelectionPage];
 			[scanner scanUpToString:@"<td class=\"content\">" intoString:NULL];
 			[scanner scanUpToString:@"<a href=\"" intoString:NULL];
@@ -317,6 +327,9 @@
 	}
 	
 	//NSLog(@"%@", dateTypeSelectionPage);
+	if (!dateTypeSelectionPage)
+		NSLog(@"No dateTypeSelectionPage");
+
 	scanner = [NSScanner scannerWithString:dateTypeSelectionPage];
 	NSString *dateTypeAction = nil;
 	[scanner scanUpToString:@"name=\"frmVendorPage\" action=\"" intoString:NULL];
@@ -335,6 +348,10 @@
 			salesModuleURL = [ittsBaseURL stringByAppendingString:salesModuleURL];
 			NSData *salesModuleData = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:salesModuleURL]] returningResponse:NULL error:NULL];
 			dateTypeSelectionPage = [[[NSString alloc] initWithData:salesModuleData encoding:NSUTF8StringEncoding] autorelease];
+			
+			if (!dateTypeSelectionPage)
+				NSLog(@"No dateTypeSelectionPage");
+			
 			scanner = [NSScanner scannerWithString:dateTypeSelectionPage];
 			[scanner scanUpToString:@"name=\"frmVendorPage\" action=\"" intoString:NULL];
 			[scanner scanString:@"name=\"frmVendorPage\" action=\"" intoString:NULL];
@@ -362,18 +379,18 @@
 		NSString *downloadActionName;
 		if (i==0) {
 			downloadType = @"Daily";
-			downloadActionName = @"17.13.1";
+			downloadActionName = @"19.15.1";
 		}
 		else {
 			downloadType = @"Weekly";
-			downloadActionName = @"17.15.1";
+			downloadActionName = @"19.17.1";
 		}
 		
 		NSString *dateTypeSelectionURLString = [ittsBaseURL stringByAppendingString:dateTypeAction]; 
 		NSDictionary *dateTypeDict = [NSDictionary dictionaryWithObjectsAndKeys:
-									  downloadType, @"17.11", 
+									  downloadType, @"19.13", 
 									  downloadType, @"hiddenDayOrWeekSelection", 
-									  @"Summary", @"17.9", 
+									  @"Summary", @"19.11", 
 									  @"ShowDropDown", @"hiddenSubmitTypeName", nil];
 		NSString *encodedDateTypeDict = [dateTypeDict formatForHTTP];
 		NSData *httpBody = [encodedDateTypeDict dataUsingEncoding:NSASCIIStringEncoding];
@@ -390,6 +407,9 @@
 		}
 		NSString *daySelectionPage = [[[NSString alloc] initWithData:daySelectionPageData encoding:NSUTF8StringEncoding] autorelease];
 		//NSLog(@"day selection page: %@", daySelectionPage);
+		if (!daySelectionPage)
+			NSLog(@"No daySelectionPage");
+
 		scanner = [NSScanner scannerWithString:daySelectionPage];
 		NSMutableArray *availableDays = [NSMutableArray array];
 		BOOL scannedDay = YES;
@@ -416,6 +436,10 @@
 			[availableDays removeObjectsInArray:weeksToSkip];
 		}
 		int numberOfDays = [availableDays count];
+		
+		if (!daySelectionPage)
+			NSLog(@"No daySelectionPage");
+
 		scanner = [NSScanner scannerWithString:daySelectionPage];
 		NSString *dayDownloadAction = nil;
 		[scanner scanUpToString:@"name=\"frmVendorPage\" action=\"" intoString:NULL];
@@ -437,11 +461,11 @@
 			}
 			[self performSelectorOnMainThread:@selector(setProgress:) withObject:status waitUntilDone:YES];
 			NSDictionary *dayDownloadDict = [NSDictionary dictionaryWithObjectsAndKeys:
-											 downloadType, @"17.11", 
+											 downloadType, @"19.13", 
 											 dayString, @"hiddenDayOrWeekSelection",
 											 @"Download", @"hiddenSubmitTypeName",
 											 @"ShowDropDown", @"hiddenSubmitTypeName",
-											 @"Summary", @"17.9",
+											 @"Summary", @"19.11",
 											 dayString, downloadActionName, 
 											 @"Download", @"download", nil];
 			NSString *encodedDayDownloadDict = [dayDownloadDict formatForHTTP];
