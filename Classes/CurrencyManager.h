@@ -41,11 +41,11 @@
 	NSNumberFormatter *numberFormatterWithoutFraction;
 }
 
-@property (retain) NSString *baseCurrency;
+@property (nonatomic, retain) NSString *baseCurrency;
 @property (nonatomic, retain) NSDate *lastRefresh;
-@property (retain) NSMutableDictionary *exchangeRates;
-@property (retain) NSArray *availableCurrencies;
-@property (retain) NSMutableDictionary *conversionDict;
+@property (nonatomic, retain) NSMutableDictionary *exchangeRates;
+@property (nonatomic, retain) NSArray *availableCurrencies;
+@property (nonatomic, retain) NSMutableDictionary *conversionDict;
 
 + (CurrencyManager *)sharedManager;
 - (NSString *)baseCurrencyDescription;
