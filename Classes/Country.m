@@ -51,7 +51,7 @@
 {
 	NSMutableDictionary *salesByProduct = [NSMutableDictionary dictionary];
 	for (Entry *e in self.entries) {
-		if ([e transactionType] == 1) {
+		if (e.purchase) {
 			NSNumber *unitsOfProduct = [salesByProduct objectForKey:[e productName]];
 			int u = (unitsOfProduct != nil) ? ([unitsOfProduct intValue]) : 0;
 			u += [e units];
@@ -101,25 +101,23 @@
 	return sum;
 }
 
-- (float)totalRevenueInBaseCurrencyForApp:(NSString *)app
-{
-	if (app == nil)
+- (float)totalRevenueInBaseCurrencyForAppWithID:(NSString *)appID {
+	if (appID == nil)
 		return [self totalRevenueInBaseCurrency];
 	float sum = 0.0;
 	for (Entry *e in self.entries) {
-		if ([e.productName isEqual:app])
+		if ([e.productIdentifier isEqual:appID])
 			sum += [e totalRevenueInBaseCurrency];
 	}
 	return sum;
 }
 
-- (int)totalUnitsForApp:(NSString *)app
-{
-	if (app == nil)
+- (int)totalUnitsForAppWithID:(NSString *)appID {
+	if (appID == nil)
 		return [self totalUnits];
 	int sum = 0;
 	for (Entry *e in self.entries) {
-		if ((e.transactionType == 1) && ([e.productName isEqual:app]))
+		if ((e.purchase) && ([e.productIdentifier isEqual:appID]))
 			sum += [e units];
 	}
 	return sum;
@@ -129,7 +127,7 @@
 {
 	int sum = 0;
 	for (Entry *e in self.entries) {
-		if (e.transactionType == 1)
+		if (e.purchase)
 			sum += [e units];
 	}
 	return sum;
@@ -154,6 +152,14 @@
 	NSSortDescriptor *sorter = [[[NSSortDescriptor alloc] initWithKey:@"totalRevenueInBaseCurrency" ascending:NO] autorelease];
 	NSArray *sortedChildren = [self.entries sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 	return sortedChildren;
+}
+
+- (NSString *)appIDForApp:(NSString *)appName {
+	for (Entry *e in self.entries) {
+		if([e.productName isEqualToString:appName])
+			return e.productIdentifier;
+	}
+	return nil;
 }
 
 - (void)dealloc

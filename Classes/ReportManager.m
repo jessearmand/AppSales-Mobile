@@ -50,7 +50,7 @@
 	
 	[[CurrencyManager sharedManager] refreshIfNeeded];
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveData) name:UIApplicationWillTerminateNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveData) name:UIApplicationWillResignActiveNotification object:nil];
 	
 	return self;
 }
@@ -125,6 +125,25 @@
 		sharedManager = [ReportManager new];
 	}
 	return sharedManager;
+}
+
+- (NSString *)appIDForAppName:(NSString *)appName {
+	for(App *app in [appsByID objectEnumerator]){
+		for(NSString *n in app.allAppNames){
+			if([n isEqualToString:appName])
+				return app.appID;
+		}
+	}
+	//search for the app with that name
+	for(Day *d in [self.days allValues]){
+		NSString *appID = [d appIDForApp:appName];
+		if(appID){
+			App *app = [appsByID objectForKey:appID];
+			[app.allAppNames addObject:appName];
+			return appID;
+		}
+	}
+	return nil;
 }
 
 #pragma mark -
@@ -508,8 +527,11 @@
 	if (numberOfNewReports == 0)
 		[self performSelectorOnMainThread:@selector(setProgress:) withObject:NSLocalizedString(@"No new reports found",nil) waitUntilDone:YES];
 	else
+	{
+		cacheChanged = YES;
 		[self performSelectorOnMainThread:@selector(setProgress:) withObject:@"" waitUntilDone:YES];
-	
+		[self performSelectorOnMainThread:@selector(saveData)     withObject:nil waitUntilDone:NO];
+	} 
 	if (errorMessageString) {
 		[self performSelectorOnMainThread:@selector(presentErrorMessage:) withObject:errorMessageString waitUntilDone:YES];
 	}
@@ -542,12 +564,18 @@
 			for (Entry *e in c.entries) {
 				NSString *appID = e.productIdentifier;
 				NSString *appName = e.productName;
-				if (appID && ![self.appsByID objectForKey:appID]) {
-					App *app = [[App new] autorelease];
-					app.appID = appID;
-					app.appName = appName;
-					app.reviewsByUser = [NSMutableDictionary dictionary];
-					[appsByID setObject:app forKey:appID];
+				if (appID){
+					App *app = [self.appsByID objectForKey:appID];
+					if(app) {
+						app.appName = appName;
+					}else
+					{
+						App *app = [[App new] autorelease];
+						app.appID = appID;
+						app.appName = appName;
+						app.reviewsByUser = [NSMutableDictionary dictionary];
+						[appsByID setObject:app forKey:appID];
+					}
 				}
 			}
 		}
@@ -587,6 +615,25 @@
 
 - (void)importReport:(Day *)report
 {
+	for (Country *c in [report.countries allValues]) {
+		for (Entry *e in c.entries) {
+			NSString *appID = e.productIdentifier;
+			NSString *appName = e.productName;
+			if (appID){
+				App *app = [self.appsByID objectForKey:appID];
+				if(app) {
+					app.appName = appName;
+				}else{
+					App *app = [[App new] autorelease];
+					app.appID = appID;
+					app.appName = appName;
+					app.reviewsByUser = [NSMutableDictionary dictionary];
+					[appsByID setObject:app forKey:appID];
+				}
+			}
+		}
+	}
+	
 	if (report.isWeek) {
 		[weeks setObject:report forKey:report.date];
 	} else {
@@ -690,7 +737,8 @@
 	[self updateReviewDownloadProgress:NSLocalizedString(@"Downloading reviews...",nil)];
 	
 	NSMutableDictionary *appIDs = [NSMutableDictionary dictionary];
-	for (NSString *appID in [self.appsByID allKeys]) {
+	for (NSString *appID in [self.appsByID allKeys]) 
+	{
 		App *a = [appsByID objectForKey:appID];
 		[appIDs setObject:a.appName forKey:appID];
 	}
@@ -1170,14 +1218,10 @@
 	for (NSString *appID in [reviews allKeys]) {
 		App *app = [appsByID objectForKey:appID];
 		NSArray *allReviewsForApp = [reviews objectForKey:appID];
-		int oldNumberOfReviews = [app.reviewsByUser count];
 		for (Review *review in allReviewsForApp) {
-			Review *oldReview = [app.reviewsByUser objectForKey:review.user];
-			if ((oldReview == nil) || (![oldReview.text isEqual:review.text])) {
-				[app.reviewsByUser setObject:review forKey:review.user];
-			}
+			review.newOrUpdatedReview = YES;
+			[app.reviewsByUser setObject:review forKey:review.user];
 		}
-		app.newReviewsCount = [app.reviewsByUser count] - oldNumberOfReviews;
 	}
 	[[NSNotificationCenter defaultCenter] postNotificationName:ReportManagerDownloadedReviewsNotification object:self];
 	[self updateReviewDownloadProgress:@""];

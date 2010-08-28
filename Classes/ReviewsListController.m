@@ -18,6 +18,25 @@
 - (void)viewDidLoad
 {
 	self.tableView.rowHeight = 85.0;
+	UIBarButtonItem * lAllRead = [[UIBarButtonItem alloc] initWithTitle:@"Read all" style:UIBarButtonItemStylePlain target:self action:@selector(readall)];
+	self.navigationItem.rightBarButtonItem = lAllRead ;
+	[lAllRead release];
+}
+
+- (CGSize)contentSizeForViewInPopover
+{
+	return CGSizeMake(320, 480);
+}
+
+-(void) readall
+{
+	NSUInteger lCurIdx, lNbReviews = [reviews count];
+	for (lCurIdx = 0; lCurIdx < lNbReviews; lCurIdx++)
+	{
+		Review * lCurReview = [reviews objectAtIndex:lCurIdx];
+		lCurReview.newOrUpdatedReview = NO;
+	}
+	[self.tableView reloadData];
 }
 
 #pragma mark Table view methods
@@ -56,7 +75,9 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
 	SingleReviewController *reviewController = [[[SingleReviewController alloc] init] autorelease];
-	reviewController.review = [reviews objectAtIndex:indexPath.row];
+	Review *review = [reviews objectAtIndex:indexPath.row];
+	reviewController.review = review;
+	review.newOrUpdatedReview = NO;
 	[self.navigationController pushViewController:reviewController animated:YES];
 }
 

@@ -31,6 +31,7 @@
 #import "Entry.h"
 #import "Country.h"
 #import "CurrencyManager.h"
+#import "ReportManager.h"
 
 @implementation Entry
 
@@ -41,6 +42,11 @@
 @synthesize transactionType;
 @synthesize royalties;
 @synthesize units;
+@dynamic purchase;
+-(Boolean) purchase
+{
+	return transactionType == 1 || transactionType == 2 || transactionType == 9;
+}
 
 
 - (id)initWithProductName:(NSString *)name transactionType:(int)type units:(int)u royalties:(float)r currency:(NSString *)currencyCode country:(Country *)aCountry
@@ -67,7 +73,9 @@
 	self.units = [coder decodeIntForKey:@"units"];
 	self.royalties = [coder decodeFloatForKey:@"royalties"];
 	self.productIdentifier = [coder decodeObjectForKey:@"productIdentifier"];
-	
+	if(!productIdentifier)
+		self.productIdentifier = [[ReportManager sharedManager] appIDForAppName:self.productName];
+
 	return self;
 }
 
@@ -85,7 +93,7 @@
 
 - (float)totalRevenueInBaseCurrency
 {
-	if (transactionType == 1) {
+	if (self.purchase) {
 		float revenueInLocalCurrency = self.royalties * self.units;
 		float revenueInBaseCurrency = [[CurrencyManager sharedManager] convertValue:revenueInLocalCurrency fromCurrency:self.currency];
 		return revenueInBaseCurrency;
@@ -97,7 +105,7 @@
 
 - (NSString *)description
 {
-	if (self.transactionType == 1) {
+	if (self.purchase) {
 		NSNumberFormatter *numberFormatter = [[NSNumberFormatter new] autorelease];
 		[numberFormatter setMinimumFractionDigits:2];
 		[numberFormatter setMaximumFractionDigits:2];
