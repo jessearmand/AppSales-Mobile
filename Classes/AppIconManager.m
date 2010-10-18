@@ -7,16 +7,17 @@
 //
 
 #import "AppIconManager.h"
+#import "App.h" // for getDocPath()
 
 
 @implementation AppIconManager
 
 - (id)init
 {
-	[super init];
-	iconsByAppName = [[NSMutableDictionary alloc] init];
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	docPath = [[paths objectAtIndex:0] retain];
+	self = [super init];
+	if (self) {
+		iconsByAppID = [[NSMutableDictionary alloc] init];
+	}
 	return self;
 }
 
@@ -29,48 +30,65 @@
 	return sharedManager;
 }
 
-- (UIImage *)iconForAppNamed:(NSString *)appName
+- (UIImage*)iconForAppNotFound
 {
-	UIImage *cachedIcon = [iconsByAppName objectForKey:appName];
+    return [UIImage imageNamed:@"Product.png"];
+}
+
+- (UIImage *)iconForAppID:(NSString *)appID
+{
+	UIImage *cachedIcon = [iconsByAppID objectForKey:appID];
 	if (cachedIcon)
 		return cachedIcon;
-	NSString *iconPath = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", appName]];
+	NSString *iconPath = [getDocPath() stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", appID]];
 	cachedIcon = [UIImage imageWithContentsOfFile:iconPath];
-	if (!cachedIcon)
-		return nil;
-	[iconsByAppName setObject:cachedIcon forKey:appName];
+	if (! cachedIcon) {
+        cachedIcon = [self iconForAppNotFound]; // prevent subsequent lookups
+    }
+    [iconsByAppID setObject:cachedIcon forKey:appID];
 	return cachedIcon;
 }
 
-- (void)downloadIconForAppID:(NSString *)appID appName:(NSString *)appName
+- (void)downloadIconForAppID:(NSString *)appID
 {
-	if ([self iconForAppNamed:appName] != nil)
-		return;
-	if ([appID length] < 4) {
-		NSLog(@"Invalid app id");
+	if ([iconsByAppID objectForKey:appID] != nil) {
 		return;
 	}
-	NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://images.appshopper.com/icons/%@/%@.png", [appID substringToIndex:3], [appID substringFromIndex:3]]]];
-	if (!imageData) imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://images.appshopper.com/icons/%@/%@.jpg", [appID substringToIndex:3], [appID substringFromIndex:3]]]];
-	if (!imageData) {
-		NSLog(@"Could not get an icon for %@ (%@)", appID, appName);
+	if (appID.length < 4) {
+		NSLog(@"invalid appID: %@", appID);
+		return;
+	}
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://images.appshopper.com/icons/%@/%@.png",
+                                       [appID substringToIndex:3], [appID substringFromIndex:3]]];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
 
+	NSData *imageData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:nil error:nil];
+	if (!imageData) {
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"http://images.appshopper.com/icons/%@/%@.jpg",
+                                    [appID substringToIndex:3], [appID substringFromIndex:3]]];
+        [urlRequest setURL:url];
+        imageData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:nil error:nil];
+    }
+	if (!imageData) {
+		NSLog(@"Could not get an icon for %@", appID);
 		/* Don't try to look it up again this session.
 		 * Don't write it to disk, so we'll check again on a subsequent launch */
-		[iconsByAppName setObject:[[[UIImage alloc] init] autorelease]
-						   forKey:appName];
+		[iconsByAppID setObject:[self iconForAppNotFound] forKey:appID];
 		return;
 	}
 	UIImage *icon = [UIImage imageWithData:imageData];
-	if (icon) [iconsByAppName setObject:icon forKey:appName];
-	NSString *iconPath = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", appName]];
-	[imageData writeToFile:iconPath atomically:YES];
+	if (icon) {
+        [iconsByAppID setObject:icon forKey:appID];
+        NSString *iconPath = [getDocPath() stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", appID]];
+        [imageData writeToFile:iconPath atomically:YES];
+    } else {
+        NSLog(@"Could not load icon image data for %@", appID);
+    }
 }
 
 - (void)dealloc 
 {
-	[docPath release];
-	[iconsByAppName release];
+	[iconsByAppID release];
     [super dealloc];
 }
 

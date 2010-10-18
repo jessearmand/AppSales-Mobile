@@ -48,7 +48,7 @@
 		UIImageView *iconMaskView = [[[UIImageView alloc] initWithFrame:CGRectMake(4, 6, 32, 32)] autorelease];
 		iconMaskView.image = [UIImage imageNamed:@"ProductMask.png"];
 		
-		detailsLabel = [[[UILabel alloc] initWithFrame:CGRectMake(50, 27, 250, 14)] autorelease];
+		detailsLabel = [[[UILabel alloc] initWithFrame:CGRectMake(50, 27, 250, 15)] autorelease];
 		detailsLabel.textColor = [UIColor blackColor];
 		detailsLabel.font = [UIFont systemFontOfSize:12.0]; 
 		detailsLabel.textAlignment = UITextAlignmentCenter;
@@ -99,8 +99,6 @@
 
 - (void)setAppIcon:(UIImage *)newIcon
 {
-	if(!newIcon)
-		newIcon = [UIImage imageNamed:@"Product.png"];
 	iconView.image = newIcon;
 }
 
