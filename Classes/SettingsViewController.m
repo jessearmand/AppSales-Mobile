@@ -39,19 +39,9 @@ AppSalesMobile
 
 @implementation SettingsViewController
 
-- (void)dealloc 
-{
-	if (mainAlertView) {
-		[mainAlertView release];
-		mainAlertView = nil;
-	}
-	
-    [super dealloc];
-}
-
 - (void)viewDidLoad 
 {
-  [super viewDidLoad];
+  	[super viewDidLoad];
 
 	self.navigationItem.title = NSLocalizedString(@"Settings",nil);
 
