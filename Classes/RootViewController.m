@@ -48,6 +48,7 @@
 #import "ReviewManager.h"
 #import "ImportExportViewController.h"
 #import "UIDevice+iPad.h"
+#import "AppleFiscalCalendar.h"
 
 @implementation RootViewController
 
@@ -66,7 +67,7 @@
 	self.activityIndicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
 	UIBarButtonItem *progressItem = [[[UIBarButtonItem alloc] initWithCustomView:activityIndicator] autorelease];
 	
-	self.settingsController = [[[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil] autorelease];
+	self.settingsController = [[SettingsViewController new] autorelease];
 	settingsController.hidesBottomBarWhenPushed = YES;
 	
 	UIBarButtonItem *refreshItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(downloadReports)] autorelease];
@@ -123,6 +124,12 @@
 												 name:ReportManagerDownloadedWeeklyReportsNotification object:nil];	
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    // Pre-initialize Apple calendar here for UI responsiveness; slight, slight gain, but noticeable
+    [AppleFiscalCalendar sharedFiscalCalendar];
+}
+
 - (void) viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -138,7 +145,7 @@
 - (UIImage *)sparklineForReports:(NSArray *)days
 {
 	if (&UIGraphicsBeginImageContextWithOptions) {
-		UIGraphicsBeginImageContextWithOptions(CGSizeMake(120, 30),NO,UIScreen.mainScreen.scale);
+		UIGraphicsBeginImageContextWithOptions(CGSizeMake(120, 30), NO, [[UIScreen mainScreen] scale]);
 	} else { // ipad
 		UIGraphicsBeginImageContext(CGSizeMake(120, 30));
 	}

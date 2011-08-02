@@ -1,12 +1,14 @@
 
 #import "AppManager.h"
 #import "App.h"
+#import "AppSalesUtils.h"
 
 #define APP_ENCODED_FILE_NAME @"encodedApps"
 
 @implementation AppManager
 
 + (AppManager*) sharedManager {
+    ASSERT_IS_MAIN_THREAD();
 	static AppManager *shared = nil;
 	if (! shared) {
 		shared = [AppManager new];
@@ -15,12 +17,13 @@
 }
 
 - (id) init {
-	if (self = [super init]) {
+    self = [super init];
+	if (self) {
 		NSString *reviewsFile = [getDocPath() stringByAppendingPathComponent:APP_ENCODED_FILE_NAME];
 		if ([[NSFileManager defaultManager] fileExistsAtPath:reviewsFile]) {
 			appsByID = [[NSKeyedUnarchiver unarchiveObjectWithFile:reviewsFile] retain];
 		} else {
-			appsByID = [[NSMutableDictionary alloc] init];
+			appsByID = [NSMutableDictionary new];
 		}
 	}
 	return self;
@@ -51,6 +54,10 @@
 
 - (void) addApp:(App*)app {
 	[appsByID setObject:app forKey:app.appID];
+}
+
+- (void) removeAppWithID:(NSString*)appID {
+    [appsByID removeObjectForKey:appID];
 }
 
 - (BOOL) createOrUpdateAppIfNeededWithID:(NSString*)appID name:(NSString*)appName {

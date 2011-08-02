@@ -16,9 +16,10 @@
 @synthesize review;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        cellView = [[[ReviewCellView alloc] initWithCell:self] autorelease];
+    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
+        cellView = [[ReviewCellView alloc] initWithCell:self];
 		[self.contentView addSubview:cellView];
+        [cellView release];
     }
     return self;
 }
@@ -75,27 +76,31 @@
 	
 	UIImage *flagImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", review.countryCode]];
 	[flagImage drawInRect:CGRectMake(6, 30, 24, 24)];
-	
-	[[UIColor blackColor] set];
+    
+    UIColor *whiteColor = [UIColor whiteColor];
+    UIColor *darkGrayColor = [UIColor darkGrayColor];
+    UIColor *blackColor = [UIColor blackColor];
+	[blackColor set];
+    
 	[[review.countryCode uppercaseString] drawInRect:CGRectMake(0, 54, CELL_COUNTRY_WIDTH, 9) withFont:[UIFont systemFontOfSize:9.0]
 									   lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
 	
-	NSMutableString *starsString = [NSMutableString string];
-	for (NSUInteger i = 0; i < review.stars; i++) {
+	NSMutableString *starsString = [NSMutableString stringWithCapacity:5];
+	for (NSUInteger i = review.stars; i > 0 ; i--) {
 		[starsString appendString:@"★"];
 	}
 	
 	[[UIColor colorWithRed:1.0 green:0.8 blue:0.0 alpha:1.0] set];
 	[starsString drawInRect:CGRectMake(CELL_COUNTRY_WIDTH+5, 0, 100, 14) withFont:[UIFont boldSystemFontOfSize:14.0] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
 	
-	[((cell.highlighted) ? [UIColor whiteColor] : [UIColor darkGrayColor]) set];
+	[((cell.highlighted) ? whiteColor : darkGrayColor) set];
 	NSString *userAndDate = [NSString stringWithFormat:@"%@  –  %@", review.user, [[NSDateFormatter sharedShortDateFormatter] stringFromDate:review.reviewDate]];
 	[userAndDate drawInRect:CGRectMake(125, 2, 188, 14) withFont:[UIFont boldSystemFontOfSize:12.0] lineBreakMode:UILineBreakModeMiddleTruncation alignment:UITextAlignmentRight];
 		
-	[((cell.highlighted) ? [UIColor whiteColor] : [UIColor blackColor]) set];
+	[((cell.highlighted) ? whiteColor : blackColor) set];
 	[review.presentationTitle drawInRect:CGRectMake(CELL_COUNTRY_WIDTH+5, 17, 265, 18) withFont:[UIFont boldSystemFontOfSize:15.0] lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
 		
-	[((cell.highlighted) ? [UIColor whiteColor] : [UIColor darkGrayColor]) set];
+	[((cell.highlighted) ? whiteColor : darkGrayColor) set];
 	[review.presentationText drawInRect:CGRectMake(CELL_COUNTRY_WIDTH+5, 36, 265, 45) withFont:[UIFont systemFontOfSize:12.0] lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
 	
 }	

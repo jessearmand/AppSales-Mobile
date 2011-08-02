@@ -57,7 +57,7 @@
 	NSMutableDictionary *idToName = [NSMutableDictionary dictionary];
 	NSMutableDictionary *salesByID = [NSMutableDictionary dictionary];
 	for (Entry *e in self.entries) {
-		if (e.purchase) {
+		if (e.isPurchase) {
 			NSNumber *unitsOfProduct = [salesByID objectForKey:e.productIdentifier];
 			int u = (unitsOfProduct != nil) ? unitsOfProduct.intValue : 0;
 			u += e.units;
@@ -67,8 +67,7 @@
 	}
 	NSMutableString *productSummary = [NSMutableString string];
 	NSEnumerator *reverseEnum = [[salesByID keysSortedByValueUsingSelector:@selector(compare:)] reverseObjectEnumerator];
-	NSString *productIdentifier;
-	while ((productIdentifier = reverseEnum.nextObject) != nil) {
+    for (NSString *productIdentifier in reverseEnum) {
 		NSNumber *productSales = [salesByID objectForKey:productIdentifier];
 		[productSummary appendFormat:@"%@ × %@, ", productSales, [idToName objectForKey:productIdentifier]];
 	}
@@ -96,9 +95,9 @@
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
-	[coder encodeObject:self.day forKey:@"day"];
-	[coder encodeObject:self.name forKey:@"name"];
-	[coder encodeObject:self.entries forKey:@"entries"];
+	[coder encodeObject:day forKey:@"day"];
+	[coder encodeObject:name forKey:@"name"];
+	[coder encodeObject:entries forKey:@"entries"];
 }
 
 - (void) addEntry:(Entry*)entry {
@@ -130,7 +129,7 @@
 		return [self totalUnits];
 	int sum = 0;
 	for (Entry *e in self.entries) {
-		if ((e.purchase) && ([e.productIdentifier isEqual:appID]))
+		if ((e.isPurchase) && ([e.productIdentifier isEqual:appID]))
 			sum += [e units];
 	}
 	return sum;
@@ -140,7 +139,7 @@
 {
 	int sum = 0;
 	for (Entry *e in self.entries) {
-		if (e.purchase)
+		if (e.isPurchase)
 			sum += [e units];
 	}
 	return sum;

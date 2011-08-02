@@ -35,6 +35,7 @@ AppSalesMobile
 #import "SFHFKeychainUtils.h"
 #import "ReportManager.h"
 #import "Review.h"
+#import "ReviewManager.h"
 #import "UIDevice+iPad.h"
 
 @implementation SettingsViewController
@@ -59,14 +60,7 @@ AppSalesMobile
 		self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	}
 	
-//	NSLog(@"%@", [UIColor groupTableViewBackgroundColor]);
-
-	explanationsLabel.font = [UIFont systemFontOfSize:12.0];
-	explanationsLabel.text = NSLocalizedString(@"Exchange rates are automatically refreshed every 6 hours.\n\nAll information is presented without any warranties.\n\nThe presented market trend reports should not be considered to be your monthly royalty reports.",nil);
-	copyrightLabel.font = [UIFont systemFontOfSize:12.0];
-	currencySectionLabel.font = [UIFont boldSystemFontOfSize:16.0];
-	loginSectionLabel.font = [UIFont boldSystemFontOfSize:16.0];
-	lastRefreshLabel.font = [UIFont systemFontOfSize:12.0];
+	explanationsLabel.text = NSLocalizedString(@"Exchange rates are automatically\nrefreshed every 6 hours", nil);
 	
 	NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"iTunesConnectUsername"];
 	if (username) {
@@ -76,13 +70,15 @@ AppSalesMobile
 																 error:nil];
 		if (password) passwordTextField.text = password;
 	}
-	translationSwitch.on = [Review showTranslatedReviews];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[self baseCurrencyChanged]; //set proper currency button title
 	[self currencyRatesDidUpdate]; //set proper refresh date in label
+	translationSwitch.on = [Review showTranslatedReviews];
+	
+	fetchReviewsLessOftenSwitch.on = [[ReviewManager sharedManager] skipLessActiveRegions];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(currencyRatesDidUpdate) 
 												 name:CurrencyManagerDidUpdateNotification object:nil];
@@ -108,7 +104,8 @@ AppSalesMobile
 									   error:nil];
 		}
 	}
-	[Review setShowTranslatedReviews:translationSwitch.on];	
+	[Review setShowTranslatedReviews:translationSwitch.on];
+	[[ReviewManager sharedManager] setSkipLessActiveRegions:fetchReviewsLessOftenSwitch.on];
 }
 
 #pragma mark Text Field Delegate 
